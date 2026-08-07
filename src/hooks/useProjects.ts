@@ -1,15 +1,21 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { axiosPublic } from "./axios/useAxiosPublic";
+import { PROJECTS_DATA, ProjectItem } from "@/data/projects";
 
 export interface ProjectData {
   _id?: string;
   name: string;
   description: string;
-  status: string;
-  stack: string[];
+  status?: string;
+  stack?: string[];
+  techStack?: string[];
   image: string;
-  repo: string;
-  live_url: string;
+  repo?: string;
+  githubLink?: string;
+  live_url?: string;
+  liveLink?: string;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export const useProjects = () => {
@@ -19,9 +25,17 @@ export const useProjects = () => {
   const projectsQuery = useQuery({
     queryKey: ["projects"],
     queryFn: async () => {
-      const { data } = await axiosPublic.get("/projects");
-      return data?.data as ProjectData[];
+      try {
+        const { data } = await axiosPublic.get("/projects");
+        if (data?.data && Array.isArray(data.data) && data.data.length > 0) {
+          return data.data as ProjectData[];
+        }
+      } catch (error) {
+        console.warn("API unavailable, returning static projects data.");
+      }
+      return PROJECTS_DATA as unknown as ProjectData[];
     },
+    initialData: PROJECTS_DATA as unknown as ProjectData[],
   });
 
   // Create project

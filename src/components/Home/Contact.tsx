@@ -1,11 +1,21 @@
 "use client";
+import Link from "next/link";
 import { Button } from "../common/Button";
 
 export const Contact = () => {
   const links = [
-    { name: "HELLO@BAUHAUS.DEV", url: "" },
-    { name: "HELLO@BAUHAUS.DEV", url: "" },
-    { name: "HELLO@BAUHAUS.DEV", url: "" },
+    {
+      name: "github.com/karmakarCoder",
+      url: "https://github.com/karmakarCoder",
+    },
+    {
+      name: "linkedin.com/in/rodrokarmakar",
+      url: "https://www.linkedin.com/in/rodrokarmakar",
+    },
+    {
+      name: "medium.com/@dev.rodro",
+      url: "https://medium.com/@dev.rodro",
+    },
   ];
   return (
     <section
@@ -30,11 +40,28 @@ export const Contact = () => {
               <span className="size-8 flex items-center justify-center border-3 border-brand-dark font-mono text-xs group-hover:bg-secondary transition-colors">
                 0{index + 1}
               </span>
-              <span className="font-heading font-bold text-lg">
+              <Link
+                href={item?.url}
+                target="_blank"
+                className="font-heading font-bold text-lg"
+              >
                 {item?.name}
-              </span>
+              </Link>
             </div>
           ))}
+
+          <div className="flex items-center gap-4 group cursor-pointer">
+            <span className="size-8 flex items-center justify-center border-3 border-brand-dark font-mono text-xs group-hover:bg-secondary transition-colors">
+              04
+            </span>
+            <Link
+              href={"mailto:dev.rodro@gmail.com"}
+              target="_blank"
+              className="font-heading font-bold text-lg"
+            >
+              dev.rodro@gmail.com
+            </Link>
+          </div>
         </div>
       </div>
 
