@@ -97,7 +97,7 @@
   }
 
   html {
-    @apply font-sans;
+    @apply scroll-smooth;
   }
 }
 

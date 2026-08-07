@@ -1,10 +1,8 @@
-import React from "react";
 import { Wrench, ArrowRight } from "lucide-react";
 
 export default function MaintenancePage() {
   return (
     <div className="min-h-screen bg-[#f5f0e8] text-primary-text relative overflow-hidden font-SpaceGrotesk flex flex-col items-center justify-center p-4 md:p-8 selection:bg-black selection:text-white">
-      {/* Background Watermarks */}
       <div className="absolute top-10 left-10 text-[25vw] font-black text-black/5 leading-none select-none pointer-events-none">
         04
       </div>

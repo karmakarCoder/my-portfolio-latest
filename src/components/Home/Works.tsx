@@ -54,73 +54,87 @@ export const Works = () => {
                 </div>
               </div>
             ))
-          : projectsQuery?.data?.slice(0, 3)?.map((project, i) => (
-              <div
-                key={i}
-                className={`group relative border-3 border-brand-dark transition-all duration-300 active:shadow-[0px_0px_0px_0px_rgba(26,26,26,1)] shadow-[12px_12px_0px_0px_rgba(26,26,26,1)] 
-              
-            `}
-              >
-                {project.image ? (
-                  <div className="relative h-64 md:h-80 border-b-3 border-brand-dark overflow-hidden bg-zinc-100">
-                    <Image
-                      src={project?.image}
-                      alt={project?.name}
-                      width={500}
-                      height={500}
-                      className="w-full h-full object-cover"
-                    />
+          : projectsQuery?.data?.map((project, i) => {
+              const githubUrl = project.githubLink || project.repo;
+              const liveUrl = project.liveLink || project.live_url;
+              const tags = project.techStack || project.stack || [];
+              const statusText = project.status || "PRODUCTION";
 
-                    <div className="absolute inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] bg-size-[20px_20px] opacity-10" />
-                    <span className="absolute top-4 right-4 bg-primary-text text-primary text-[10px] px-2 py-1 z-10 uppercase">
-                      {project.status}
-                    </span>
-                  </div>
-                ) : (
-                  <div className="h-64 md:h-80 border-b-3 border-brand-dark flex items-center justify-center relative overflow-hidden">
-                    <span className="text-[200px] font-black opacity-10 absolute -bottom-10 -right-10">
-                      3
-                    </span>
-                    <span className="absolute top-4 right-4 bg-blue-600 text-primary text-[10px] px-2 py-1 z-20">
-                      {project.status}
-                    </span>
-                  </div>
-                )}
-
-                <div className="p-6 group-hover:bg-primary-text duration-300">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-2xl md:text-3xl mb-4 font-semibold group-hover:text-secondary group-hover:bg-primary-text transition-colors inline-block px-1">
-                      {project.name}
-                    </h3>
-                    <div className="flex items-center gap-2 group-hover:text-secondary">
-                      {project?.repo && (
-                        <Link href={project?.repo} target="_blank">
-                          <GithubSvg />
-                        </Link>
-                      )}
-                      <ExternalLink
-                        size={20}
-                        className="cursor-pointer text-gray-400"
+              return (
+                <div
+                  key={project._id || i}
+                  className="group relative border-3 border-brand-dark transition-all duration-300 active:shadow-[0px_0px_0px_0px_rgba(26,26,26,1)] shadow-[12px_12px_0px_0px_rgba(26,26,26,1)]"
+                >
+                  {project.image ? (
+                    <div className="relative h-64 md:h-80 border-b-3 border-brand-dark overflow-hidden bg-zinc-100">
+                      <Image
+                        src={project?.image}
+                        alt={project?.name || "Project preview"}
+                        width={500}
+                        height={500}
+                        className="w-full h-full object-cover"
                       />
+
+                      <div className="absolute inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] bg-size-[20px_20px] opacity-10" />
+                      <span className="absolute top-4 right-4 bg-primary-text text-primary text-[10px] px-2 py-1 z-10 uppercase">
+                        {statusText}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="h-64 md:h-80 border-b-3 border-brand-dark flex items-center justify-center relative overflow-hidden">
+                      <span className="text-[200px] font-black opacity-10 absolute -bottom-10 -right-10">
+                        {i + 1}
+                      </span>
+                      <span className="absolute top-4 right-4 bg-blue-600 text-primary text-[10px] px-2 py-1 z-20 uppercase">
+                        {statusText}
+                      </span>
+                    </div>
+                  )}
+
+                  <div className="p-6 group-hover:bg-primary-text duration-300">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-2xl md:text-3xl mb-4 font-semibold group-hover:text-secondary group-hover:bg-primary-text transition-colors inline-block px-1">
+                        {project.name}
+                      </h3>
+                      <div className="flex items-center gap-2 group-hover:text-secondary">
+                        {githubUrl && (
+                          <Link href={githubUrl} target="_blank">
+                            <GithubSvg />
+                          </Link>
+                        )}
+                        {liveUrl ? (
+                          <Link href={liveUrl} target="_blank">
+                            <ExternalLink
+                              size={20}
+                              className="cursor-pointer text-gray-400 hover:text-secondary"
+                            />
+                          </Link>
+                        ) : (
+                          <ExternalLink
+                            size={20}
+                            className="cursor-pointer text-gray-400"
+                          />
+                        )}
+                      </div>
+                    </div>
+
+                    <p className="font-sans text-sm font-medium text-zinc-600 mb-6 line-clamp-2 group-hover:text-[#E8E3DA]">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[10px] font-heading font-bold border-3 border-brand-dark px-2 py-1 group-hover:border-secondary group-hover:text-secondary"
+                        >
+                          {tag}
+                        </span>
+                      ))}
                     </div>
                   </div>
-
-                  <p className="font-sans text-sm font-medium text-zinc-600 mb-6 line-clamp-2 group-hover:text-[#E8E3DA]">
-                    {project.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {project.stack.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[10px] font-heading font-bold border-3 border-brand-dark px-2 py-1 group-hover:border-secondary group-hover:text-secondary"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
 
         {/* "More on the way" card */}
         <div className="border-2  p-12 flex flex-col items-center justify-center text-center bg-zinc-100 border-dashed">
