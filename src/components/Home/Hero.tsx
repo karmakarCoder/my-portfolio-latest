@@ -61,25 +61,50 @@ export const Hero = () => {
             .fromTo(
               decoBoxRef.current,
               { x: -30, y: 30, opacity: 0, rotation: -45 },
-              { x: 0, y: 0, opacity: 1, rotation: 0, duration: 0.6, ease: "back.out(1.5)" },
+              {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                rotation: 0,
+                duration: 0.6,
+                ease: "back.out(1.5)",
+              },
               "-=0.5",
             )
             .fromTo(
               [textRef1.current, textRef2.current, textRef4.current],
               { y: 30, opacity: 0 },
-              { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out" },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: "power3.out",
+              },
               "-=0.2",
             )
             .fromTo(
               boxTextRef.current,
               { scale: 0.8, opacity: 0, rotation: -5 },
-              { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.7)" },
+              {
+                scale: 1,
+                opacity: 1,
+                rotation: 0,
+                duration: 0.5,
+                ease: "back.out(1.7)",
+              },
               "-=0.3",
             )
             .fromTo(
               dotsRef.current,
               { scale: 0, opacity: 0 },
-              { scale: 1, opacity: 1, duration: 0.3, stagger: 0.05, ease: "back.out(2)" },
+              {
+                scale: 1,
+                opacity: 1,
+                duration: 0.3,
+                stagger: 0.05,
+                ease: "back.out(2)",
+              },
               "-=0.2",
             )
             .fromTo(
@@ -92,18 +117,36 @@ export const Hero = () => {
           tl.fromTo(
             [textRef1.current, textRef2.current, textRef4.current],
             { y: 30, opacity: 0 },
-            { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, ease: "power3.out" },
+            {
+              y: 0,
+              opacity: 1,
+              duration: 0.6,
+              stagger: 0.1,
+              ease: "power3.out",
+            },
           )
             .fromTo(
               boxTextRef.current,
               { scale: 0.8, opacity: 0, rotation: -5 },
-              { scale: 1, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.7)" },
+              {
+                scale: 1,
+                opacity: 1,
+                rotation: 0,
+                duration: 0.5,
+                ease: "back.out(1.7)",
+              },
               "-=0.3",
             )
             .fromTo(
               dotsRef.current,
               { scale: 0, opacity: 0 },
-              { scale: 1, opacity: 1, duration: 0.3, stagger: 0.05, ease: "back.out(2)" },
+              {
+                scale: 1,
+                opacity: 1,
+                duration: 0.3,
+                stagger: 0.05,
+                ease: "back.out(2)",
+              },
               "-=0.2",
             )
             .fromTo(
@@ -121,7 +164,14 @@ export const Hero = () => {
             .fromTo(
               decoBoxRef.current,
               { x: -30, y: 30, opacity: 0, rotation: -45 },
-              { x: 0, y: 0, opacity: 1, rotation: 0, duration: 0.6, ease: "back.out(1.5)" },
+              {
+                x: 0,
+                y: 0,
+                opacity: 1,
+                rotation: 0,
+                duration: 0.6,
+                ease: "back.out(1.5)",
+              },
               "-=0.5",
             );
         }
@@ -130,11 +180,11 @@ export const Hero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex flex-col overflow-hidden justify-center items-center">
+    <section className="relative pb-10 pt-16 lg:pt-0 lg:pb-0 lg:min-h-screen flex flex-col overflow-hidden justify-center items-center">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 2xl:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="z-10">
-            <h1 className="text-3xl leading-none font-bold uppercase md:text-6xl md:mb-8 mb-5 tracking-tighter">
+            <h1 className="text-4xl leading-none font-bold uppercase md:text-6xl md:mb-8 mb-5 tracking-tighter">
               <div ref={textRef1}>
                 HEy
                 <span
