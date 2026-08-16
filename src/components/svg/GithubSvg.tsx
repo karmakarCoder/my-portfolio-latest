@@ -2,11 +2,9 @@ export default function GithubSvg() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="128"
-      height="128"
       viewBox="0 0 24 24"
       fill="none"
-      className="size-6 fill-current"
+      className="size-5 fill-current"
       data-src="https://cdn.hugeicons.com/icons/github-01-solid-rounded.svg?v=1.0.0"
       role="img"
     >
