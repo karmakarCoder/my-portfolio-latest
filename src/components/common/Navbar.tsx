@@ -54,7 +54,7 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="py-2 border-b bg-primary/80 backdrop-blur-lg border-brand-dark bg-brand-cream sticky top-0 z-50">
+      <nav className="py-3 border-b bg-primary/80 backdrop-blur-lg border-brand-dark bg-brand-cream sticky top-0 z-50">
         <Container>
           <div className="flex items-center justify-end">
             <div className="flex items-center gap-8">
@@ -79,14 +79,14 @@ export const Navbar = () => {
                   href="https://docs.google.com/document/d/1gLgouJVGiYar-1pIrTt1gD3A83ZF6nM-FMT8J8cyPTs/edit?tab=t.0"
                   target="_blank"
                 >
-                  <Button size="xs">
+                  <Button size="sm">
                     <DocumentSvg /> Resume
                   </Button>
                 </Link>
 
                 <Button
-                  size="xs"
-                  className="px-1 rounded-sm md:hidden z-60"
+                  size="sm"
+                  className="px-1 rounded md:hidden z-60"
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   {isOpen ? <X size={20} /> : <MenuSvg />}
