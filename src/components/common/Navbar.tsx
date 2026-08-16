@@ -86,7 +86,7 @@ export const Navbar = () => {
 
                 <Button
                   size="sm"
-                  className="px-1 rounded md:hidden z-60"
+                  className="px-1 rounded-sm md:hidden z-60"
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   {isOpen ? <X size={20} /> : <MenuSvg />}
