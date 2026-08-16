@@ -27,7 +27,6 @@ export const Hero = () => {
   };
 
   useGSAP(() => {
-    // Waving hand animation
     gsap.to(handRef.current, {
       rotation: 20,
       transformOrigin: "bottom right",
@@ -56,7 +55,14 @@ export const Hero = () => {
           tl.fromTo(
             profileBoxRef.current,
             { scale: 0.9, opacity: 0, y: 30 },
-            { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
+            {
+              scale: 1,
+              opacity: 1,
+              y: 0,
+              duration: 0.7,
+              ease: "power3.out",
+              delay: "1",
+            },
           )
             .fromTo(
               decoBoxRef.current,
