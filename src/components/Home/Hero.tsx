@@ -61,7 +61,7 @@ export const Hero = () => {
               y: 0,
               duration: 0.7,
               ease: "power3.out",
-              delay: "1",
+              delay: "0.7",
             },
           )
             .fromTo(
