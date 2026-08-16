@@ -89,7 +89,7 @@ export const Navbar = () => {
                   className="px-1 rounded-sm md:hidden z-60"
                   onClick={() => setIsOpen(!isOpen)}
                 >
-                  {isOpen ? <X size={20} /> : <MenuSvg />}
+                  {isOpen ? <X className="size-6" /> : <MenuSvg />}
                 </Button>
               </div>
             </div>
