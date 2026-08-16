@@ -12,9 +12,9 @@ export const About = () => {
     <Container>
       <section
         id="about"
-        className="grid grid-cols-1 lg:grid-cols-2 min-h-screen"
+        className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-0 lg:min-h-screen"
       >
-        <div className="flex flex-col justify-center lg:border-r-2">
+        <div className="flex flex-col lg:justify-center lg:border-r-2">
           <span className="bg-red-500 text-primary text-xs font-medium px-2 py-0.5 w-fit mb-6 tracking-widest uppercase">
             about
           </span>
@@ -31,7 +31,7 @@ export const About = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 border-y-2 border-l-2 lg:border-l-0">
+        <div className="grid grid-cols-2 border-y-2 h-[300px] lg:h-auto border-l-2 lg:border-l-0">
           {stats.map((stat, i) => (
             <div
               key={i}
