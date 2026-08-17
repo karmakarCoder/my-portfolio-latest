@@ -179,7 +179,7 @@ export const About = () => {
             ref={headingRef}
             className="text-2xl uppercase md:text-4xl mb-4 leading-[1.1] font-bold opacity-0"
           >
-            FULL-STACK developer <br />& SYSTEM DESIGNER.
+            Frontend Focused <br /> FULL-STACK developer & ux enthusiast.
           </h2>
           <p className="font-sans text-sm md:text-base font-light max-w-xl opacity-0 animate-content">
             I build software that thinks and acts. I’m a Full-Stack Developer

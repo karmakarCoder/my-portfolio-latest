@@ -126,7 +126,7 @@ export const Skills = () => {
               key={index}
               className="bg-zinc-50 shadow-md rounded-xl p-4 lg:p-6 opacity-0 animate-content"
             >
-              <h3 className="text-lg font-bold uppercase mb-6 pb-2 text-black">
+              <h3 className="text-lg font-bold uppercase mb-2 pb-2 text-black">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-3">
