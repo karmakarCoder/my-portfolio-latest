@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import Image from "next/image";
 import ScrollDownSvg from "../svg/scrollDownSvg";
-import rodro from "../../assets/rodro.jpg";
+import rodro from "../../assets/foto.jpg";
 import Link from "next/link";
 import { Button } from "../ui/button";
 import Container from "../common/Container";
@@ -31,7 +31,7 @@ export const Hero = () => {
       rotation: 20,
       transformOrigin: "bottom right",
       yoyo: true,
-      repeat: 2,
+      repeat: 3,
       duration: 0.8,
       ease: "sine.inOut",
     });
@@ -51,147 +51,94 @@ export const Hero = () => {
 
         const tl = gsap.timeline();
 
-        if (isMobile) {
-          tl.fromTo(
+        tl.fromTo(
+          [textRef1.current, textRef2.current, textRef4.current],
+          {
+            y: 60,
+            opacity: 0,
+            rotate: -4,
+            filter: "blur(12px)",
+            transformOrigin: "left bottom",
+          },
+          {
+            y: 0,
+            opacity: 1,
+            rotate: 0,
+            filter: "blur(0px)",
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "power4.out",
+          },
+        )
+          .fromTo(
+            boxTextRef.current,
+            { scale: 0.5, opacity: 0, rotation: -15, filter: "blur(10px)" },
+            {
+              scale: 1,
+              opacity: 1,
+              rotation: 0,
+              filter: "blur(0px)",
+              duration: 0.7,
+              ease: "back.out(2)",
+            },
+            "-=0.4",
+          )
+          .fromTo(
+            dotsRef.current,
+            { scale: 0, opacity: 0, rotation: 90 },
+            {
+              scale: 1,
+              opacity: 1,
+              rotation: 0,
+              duration: 0.4,
+              stagger: 0.1,
+              ease: "back.out(2.5)",
+            },
+            "-=0.3",
+          )
+          .fromTo(
+            buttonsRef.current,
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
+            "-=0.2",
+          )
+          .fromTo(
             profileBoxRef.current,
-            { scale: 0.9, opacity: 0, y: 30 },
+            { scale: 0.9, opacity: 0, y: 30, filter: "blur(15px)" },
             {
               scale: 1,
               opacity: 1,
               y: 0,
+              filter: "blur(0px)",
               duration: 0.7,
               ease: "power3.out",
-              delay: "0.7",
             },
+            "-=0.6",
           )
-            .fromTo(
-              decoBoxRef.current,
-              { x: -30, y: 30, opacity: 0, rotation: -45 },
-              {
-                x: 0,
-                y: 0,
-                opacity: 1,
-                rotation: 0,
-                duration: 0.6,
-                ease: "back.out(1.5)",
-              },
-              "-=0.5",
-            )
-            .fromTo(
-              [textRef1.current, textRef2.current, textRef4.current],
-              { y: 30, opacity: 0 },
-              {
-                y: 0,
-                opacity: 1,
-                duration: 0.6,
-                stagger: 0.1,
-                ease: "power3.out",
-              },
-              "-=0.2",
-            )
-            .fromTo(
-              boxTextRef.current,
-              { scale: 0.8, opacity: 0, rotation: -5 },
-              {
-                scale: 1,
-                opacity: 1,
-                rotation: 0,
-                duration: 0.5,
-                ease: "back.out(1.7)",
-              },
-              "-=0.3",
-            )
-            .fromTo(
-              dotsRef.current,
-              { scale: 0, opacity: 0 },
-              {
-                scale: 1,
-                opacity: 1,
-                duration: 0.3,
-                stagger: 0.05,
-                ease: "back.out(2)",
-              },
-              "-=0.2",
-            )
-            .fromTo(
-              buttonsRef.current,
-              { y: 20, opacity: 0 },
-              { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-              "-=0.2",
-            );
-        } else {
-          tl.fromTo(
-            [textRef1.current, textRef2.current, textRef4.current],
-            { y: 30, opacity: 0 },
+          .fromTo(
+            decoBoxRef.current,
+            { x: -30, y: 30, opacity: 0, rotation: -45 },
             {
+              x: 0,
               y: 0,
               opacity: 1,
+              rotation: 0,
               duration: 0.6,
-              stagger: 0.1,
-              ease: "power3.out",
+              ease: "back.out(1.5)",
             },
-          )
-            .fromTo(
-              boxTextRef.current,
-              { scale: 0.8, opacity: 0, rotation: -5 },
-              {
-                scale: 1,
-                opacity: 1,
-                rotation: 0,
-                duration: 0.5,
-                ease: "back.out(1.7)",
-              },
-              "-=0.3",
-            )
-            .fromTo(
-              dotsRef.current,
-              { scale: 0, opacity: 0 },
-              {
-                scale: 1,
-                opacity: 1,
-                duration: 0.3,
-                stagger: 0.05,
-                ease: "back.out(2)",
-              },
-              "-=0.2",
-            )
-            .fromTo(
-              buttonsRef.current,
-              { y: 20, opacity: 0 },
-              { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-              "-=0.2",
-            )
-            .fromTo(
-              profileBoxRef.current,
-              { scale: 0.9, opacity: 0, y: 30 },
-              { scale: 1, opacity: 1, y: 0, duration: 0.7, ease: "power3.out" },
-              "-=0.6",
-            )
-            .fromTo(
-              decoBoxRef.current,
-              { x: -30, y: 30, opacity: 0, rotation: -45 },
-              {
-                x: 0,
-                y: 0,
-                opacity: 1,
-                rotation: 0,
-                duration: 0.6,
-                ease: "back.out(1.5)",
-              },
-              "-=0.5",
-            );
-        }
+            "-=0.5",
+          );
       },
     );
   }, []);
 
   return (
-    <section className="relative pb-10 pt-16 lg:pt-0 lg:pb-0 lg:min-h-screen flex flex-col overflow-hidden justify-center items-center">
+    <section className="relative pb-10 pt-10 lg:pt-0 lg:pb-0 lg:min-h-screen flex flex-col overflow-hidden justify-center items-center">
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="z-10">
-            <h1 className="text-4xl leading-none font-bold uppercase md:text-6xl md:mb-8 mb-5 tracking-tighter">
-              <div ref={textRef1}>
+            <h1 className="text-4xl leading-none font-bold uppercase md:text-6xl md:mb-8 mb-5 tracking-tight">
+              <div ref={textRef1} className="opacity-0">
                 HEy
                 <span
                   ref={handRef}
@@ -200,68 +147,66 @@ export const Hero = () => {
                   👋
                 </span>
               </div>
-              <div ref={textRef2}>this is </div>
+              <div ref={textRef2} className="opacity-0">
+                this is{" "}
+              </div>
               <div className="inline-block relative">
                 <div
                   ref={addToDotsRef}
-                  className="size-1.5 bg-secondary absolute -top-0.5 -left-1"
+                  className="size-1.5 bg-primary absolute -top-0.5 -left-1 opacity-0"
                 ></div>
                 <div
                   ref={addToDotsRef}
-                  className="size-1.5 bg-secondary absolute -top-0.5 -right-1"
+                  className="size-1.5 bg-primary absolute -top-0.5 -right-1 opacity-0"
                 ></div>
                 <div
                   ref={addToDotsRef}
-                  className="size-1.5 bg-secondary absolute -bottom-0.5 -right-1"
+                  className="size-1.5 bg-primary absolute -bottom-0.5 -right-1 opacity-0"
                 ></div>
                 <div
                   ref={addToDotsRef}
-                  className="size-1.5 bg-secondary absolute -bottom-0.5 -left-1"
+                  className="size-1.5 bg-primary absolute -bottom-0.5 -left-1 opacity-0"
                 ></div>
                 <span
                   ref={boxTextRef}
-                  className="bg-primary border-secondary border-2 px-1 inline-block"
+                  className="bg-primary px-2 py-0.5 inline-block opacity-0 text-black"
                 >
                   your rodro
                 </span>
               </div>
-              <div ref={textRef4}>karmakar</div>
+              <div ref={textRef4} className="opacity-0">
+                karmakar
+              </div>
             </h1>
 
             <div
               ref={buttonsRef}
-              className="flex items-center gap-2 md:gap-6 mt-3 sm:mt-4 2xl:mt-12"
+              className="flex items-center gap-2 md:gap-6 mt-3 sm:mt-4 2xl:mt-12 opacity-0"
             >
               <Link href="#work">
-                <Button>VIEW PROJECTS</Button>
+                <Button>View projects</Button>
               </Link>
 
-              <div className="flex items-center text-primary-text gap-2 text-xs font-bold tracking-widest uppercase">
+              <div className="flex items-center text-primary-text gap-2 text-sm font-medium">
                 <ScrollDownSvg />
-                <span className="hidden sm:block">SCROLL TO EXPLORE</span>
+                <span className="hidden sm:block">Scroll to explore</span>
               </div>
             </div>
           </div>
 
-          <div className="relative order-first lg:order-last flex justify-center lg:justify-end">
+          <div className="relative order-last flex justify-center lg:justify-end">
             <div
               ref={profileBoxRef}
-              className="relative w-60 h-65 md:w-70 md:h-90 border-2 border-brand-dark brutalist-shadow bg-zinc-200"
+              className="relative w-60 h-65 md:w-70 md:h-90 shadow-xl overflow-hidden md:rounded-none rounded-lg bg-zinc-200 opacity-0"
             >
               <Image
                 src={rodro}
                 alt="Profile"
                 fill
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                className="object-cover hover:brightness-115 transition-all duration-500"
                 priority
               />
             </div>
-
-            {/* Decorative elements */}
-            <div
-              ref={decoBoxRef}
-              className="absolute -top-4 -right-4 w-12 h-12 bg-secondary brutalist-border -z-10 md:block hidden"
-            />
           </div>
         </div>
       </Container>

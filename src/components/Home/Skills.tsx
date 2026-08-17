@@ -1,6 +1,62 @@
+"use client";
 import Container from "../common/Container";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export const Skills = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        headingRef.current,
+        {
+          y: 60,
+          opacity: 0,
+          rotate: -4,
+          filter: "blur(12px)",
+          transformOrigin: "left bottom",
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotate: 0,
+          filter: "blur(0px)",
+          duration: 0.8,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+          },
+        },
+      );
+      gsap.fromTo(
+        ".animate-content",
+        { y: 40, opacity: 0, filter: "blur(8px)" },
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+          },
+        },
+      );
+    },
+    { scope: sectionRef },
+  );
+
   const skillCategories = [
     {
       title: "Frontend",
@@ -54,25 +110,30 @@ export const Skills = () => {
 
   return (
     <Container>
-      <section id="skills" className="pb-16 pt-7 lg:pt-10">
+      <section ref={sectionRef} id="skills" className="pb-16 pt-7 lg:pt-10">
         <div className="flex justify-between items-end mb-8">
-          <h2 className="md:text-4xl text-2xl font-bold uppercase">Skills</h2>
+          <h2
+            ref={headingRef}
+            className="md:text-4xl text-2xl font-bold uppercase opacity-0"
+          >
+            Skills
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {skillCategories.map((category, index) => (
             <div
               key={index}
-              className="border-2 border-brand-dark bg-zinc-50 shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] p-4 lg:p-6"
+              className="bg-zinc-50 shadow-md rounded-xl p-4 lg:p-6 opacity-0 animate-content"
             >
-              <h3 className="text-lg font-bold uppercase mb-6 border-b-2 border-brand-dark pb-2">
+              <h3 className="text-lg font-bold uppercase mb-6 pb-2 text-black">
                 {category.title}
               </h3>
               <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, idx) => (
                   <span
                     key={idx}
-                    className="text-xs font-heading font-medium border border-brand-dark px-2 py-1 uppercase hover:bg-primary-text hover:text-primary transition-colors cursor-default"
+                    className="text-xs font-heading font-medium rounded-md px-2 py-1 capitalize bg-primary text-black transition-colors cursor-default"
                   >
                     {skill}
                   </span>

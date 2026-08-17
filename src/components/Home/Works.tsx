@@ -5,15 +5,75 @@ import Image from "next/image";
 import Link from "next/link";
 import GithubSvg from "../svg/GithubSvg";
 import Container from "../common/Container";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export const Works = () => {
+  const sectionRef = useRef(null);
+  const headingRef = useRef(null);
+
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        headingRef.current,
+        {
+          y: 60,
+          opacity: 0,
+          rotate: -4,
+          filter: "blur(12px)",
+          transformOrigin: "left bottom",
+        },
+        {
+          y: 0,
+          opacity: 1,
+          rotate: 0,
+          filter: "blur(0px)",
+          duration: 0.8,
+          ease: "power4.out",
+          scrollTrigger: {
+            trigger: headingRef.current,
+            start: "top 85%",
+          },
+        },
+      );
+      gsap.fromTo(
+        ".animate-content",
+        { y: 40, opacity: 0, filter: "blur(8px)" },
+        {
+          y: 0,
+          opacity: 1,
+          filter: "blur(0px)",
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top 75%",
+          },
+        },
+      );
+    },
+    { scope: sectionRef },
+  );
+
   const { projectsQuery } = useProjects();
 
   return (
     <Container>
-      <section id="work" className="py-16">
+      <section ref={sectionRef} id="work" className="lg:py-16">
         <div className="flex justify-between items-end mb-12">
-          <h2 className="md:text-4xl text-2xl font-bold">SELECTED WORKS</h2>
+          <h2
+            ref={headingRef}
+            className="md:text-4xl text-2xl font-bold opacity-0"
+          >
+            SELECTED WORKS
+          </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -21,10 +81,9 @@ export const Works = () => {
             ? [...Array(3)].map((_, index) => (
                 <div
                   key={index}
-                  className="relative border-3 border-brand-dark animate-pulse 
-  shadow-[12px_12px_0px_0px_rgba(26,26,26,1)]"
+                  className="relative animate-pulse shadow-lg rounded-xl overflow-hidden"
                 >
-                  <div className="relative h-64 md:h-80 border-b-3 border-brand-dark overflow-hidden bg-zinc-200">
+                  <div className="relative h-64 md:h-80 overflow-hidden bg-zinc-200">
                     <div className="absolute inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] bg-size-[20px_20px] opacity-10" />
                     <div className="absolute top-4 right-4 h-5 w-16 bg-zinc-300" />
                   </div>
@@ -62,10 +121,10 @@ export const Works = () => {
                 return (
                   <div
                     key={project._id || i}
-                    className="group relative border-2 border-brand-dark active:shadow-[0px_0px_0px_0px_rgba(26,26,26,1)] shadow-[4px_4px_0px_0px_rgba(26,26,26,1)]"
+                    className="group relative shadow-lg rounded-md overflow-hidden opacity-0 animate-content"
                   >
                     {project.image ? (
-                      <div className="relative h-60k border-b-2 border-brand-dark overflow-hidden bg-zinc-100">
+                      <div className="relative h-40 lg:h-60 overflow-hidden bg-zinc-100">
                         <Image
                           src={project?.image}
                           alt={project?.name || "Project preview"}
@@ -80,7 +139,7 @@ export const Works = () => {
                         </span>
                       </div>
                     ) : (
-                      <div className="h-64 md:h-80 border-b-2 border-brand-dark flex items-center justify-center relative overflow-hidden">
+                      <div className="h-64 md:h-80 flex items-center justify-center relative overflow-hidden bg-zinc-100">
                         <span className="text-[100px] font-black opacity-10 absolute -bottom-10 -right-10">
                           {i + 1}
                         </span>
@@ -90,9 +149,9 @@ export const Works = () => {
                       </div>
                     )}
 
-                    <div className="p-6 group-hover:bg-primary-text">
+                    <div className="lg:p-6 p-3 bg-gray-900/40 backdrop-blur-lg">
                       <div className="flex items-center justify-between">
-                        <h3 className="text-xl mb-4 font-semibold group-hover:text-secondary group-hover:bg-primary-text inline-block px-1">
+                        <h3 className="text-lg lg:text-xl leading-6 mb-4 font-semibold inline-block px-1">
                           {project.name}
                         </h3>
                         <div className="flex items-center gap-2 group-hover:text-secondary">
@@ -117,14 +176,14 @@ export const Works = () => {
                         </div>
                       </div>
 
-                      <p className="font-sans text-xs font-medium text-zinc-600 mb-4 line-clamp-2 group-hover:text-[#E8E3DA]">
+                      <p className="font-sans text-xs font-medium text-zinc-400 mb-4 line-clamp-2">
                         {project.description}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {tags.map((tag) => (
                           <span
                             key={tag}
-                            className="text-[10px] font-heading font-medium border border-brand-dark px-1.5 py-0.5 group-hover:border-secondary group-hover:text-secondary"
+                            className="text-[10px] bg-gray-950 font-normal rounded-md px-2 py-1"
                           >
                             {tag}
                           </span>
@@ -134,26 +193,6 @@ export const Works = () => {
                   </div>
                 );
               })}
-
-          {/* "More on the way" card */}
-          <div className="border-2  p-12 flex flex-col items-center justify-center text-center bg-zinc-100 border-dashed">
-            <div className="size-14 border-2 border-brand-dark flex items-center justify-center mb-6">
-              <span className="font-mono text-xl font-bold">{"<>"}</span>
-            </div>
-            <h3 className="text-xl mb-2">MORE ON THE WAY</h3>
-            <p className="text-xs font-sans text-zinc-500 mb-8 max-w-115 uppercase">
-              Currently building KTA+ faith-centered education ecosystem that
-              integrates curriculum, live teaching, bundles, communities,
-            </p>
-            <Link
-              href="https://github.com/karmakarCoder?tab=repositories"
-              target="_blank"
-            >
-              <button className="border border-brand-dark px-6 uppercase py-2 text-xs font-heading font-bold hover:bg-primary-text hover:text-primary transition-colors">
-                MOre
-              </button>
-            </Link>
-          </div>
         </div>
       </section>
     </Container>

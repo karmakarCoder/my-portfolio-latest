@@ -32,10 +32,22 @@ export default function RootLayout({
         geist.variable,
       )}
     >
-      <body className="min-h-full">
-        <LenisProvider>
-          <TranstackProvider>{children}</TranstackProvider>{" "}
-        </LenisProvider>
+      <body className="min-h-full bg-black">
+        <div className="min-h-screen w-full relative">
+          {/* Cosmic Noise Background */}
+          <div
+            className="inset-0 z-0 pointer-events-none fixed"
+            style={{
+              background:
+                "radial-gradient(circle at 20% 20%, #0A1210 0%, transparent 40%), radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05) 0%, transparent 40%), linear-gradient(120deg, #0A1210 0%, #0B2B2D 100%)",
+            }}
+          />
+          <div className="relative z-10">
+            <LenisProvider>
+              <TranstackProvider>{children}</TranstackProvider>{" "}
+            </LenisProvider>
+          </div>
+        </div>
       </body>
     </html>
   );
