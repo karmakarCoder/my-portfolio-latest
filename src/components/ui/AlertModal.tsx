@@ -27,7 +27,7 @@ export const AlertModal = ({
 }: AlertModalProps) => {
   return (
     <AlertDialog open={isOpen} onOpenChange={onClose}>
-      <AlertDialogContent className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] max-w-sm">
+      <AlertDialogContent className="bg-white rounded-lg shadow-xl max-w-sm">
         <AlertDialogHeader className="flex flex-col items-center text-center">
           {type === "success" ? (
             <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
@@ -44,7 +44,7 @@ export const AlertModal = ({
         <AlertDialogFooter>
           <AlertDialogAction
             onClick={onClose}
-            className="w-full bg-black text-white py-4 font-black tracking-widest hover:bg-secondary hover:text-black transition-all border-2 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] active:shadow-none active:translate-x-0.5 active:translate-y-0.5"
+            className="w-full bg-black text-white py-4 font-black tracking-widest hover:bg-secondary hover:text-black transition-all rounded-md shadow-md active:scale-95"
           >
             CLOSE
           </AlertDialogAction>

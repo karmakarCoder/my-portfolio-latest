@@ -5,18 +5,18 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --primary-color: #f5f0e8;
+  --primary-color: #22E1F0;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
-  --color-brand-dark: #171717;
+  --color-brand-dark: #ffffff;
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --primary: #ffffff;
+  --primary-foreground: #000000;
+  --secondary: #7AEDD2;
+  --secondary-foreground: #000000;
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
@@ -43,8 +43,8 @@
 
 @theme inline {
   --color-primary: var(--primary-color);
-  --color-secondary: #ffcc00;
-  --color-primary-text: #1a1a1a;
+  --color-secondary: var(--secondary);
+  --color-primary-text: #ffffff;
   --font-SpaceGrotesk: var(--font-space-grotesk);
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);
@@ -89,11 +89,11 @@
 
 @layer base {
   * {
-    @apply font-SpaceGrotesk border-border outline-ring/50;
+    @apply font-SpaceGrotesk outline-ring/50;
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-primary-text;
   }
 
   html {
@@ -103,19 +103,15 @@
 
 @layer utilities {
   .brutalist-border {
-    @apply border-2 border-primary-text;
   }
 
   .brutalist-border-thick {
-    @apply border-4 border-primary-text;
   }
 
   .brutalist-shadow {
-    box-shadow: 4px 4px 0px 0px #000000;
   }
 
   .brutalist-shadow-lg {
-    box-shadow: 8px 8px 0px 0px #000000;
   }
 
   .marquee-content {

@@ -49,7 +49,7 @@ const pricingData = [
 
 export const Pricing = () => {
   return (
-    <section className="p-6 md:p-12 lg:p-20 bg-primary border-b-2 lg:border-b-4 border-brand-dark">
+    <section className="p-6 md:p-12 lg:p-20 bg-primary">
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 lg:mb-24 gap-4">
         <h2 className="text-5xl md:text-6xl font-bold leading-none uppercase tracking-tighter">
           INVESTMENT
@@ -67,7 +67,7 @@ export const Pricing = () => {
         {pricingData.map((tier) => (
           <div
             key={tier.id}
-            className={`border-4 border-primary-text p-8 shadow-[7px_7px_0px_0px_rgba(26,26,26,1)] h-137 flex flex-col justify-between ${tier.isPopular ? "bg-secondary" : tier.badge === "enterprise" ? "bg-primary-text text-primary" : "bg-primary text-primary-text"}`}
+            className={`p-8 rounded-xl shadow-lg h-137 flex flex-col justify-between ${tier.isPopular ? "bg-secondary text-black" : tier.badge === "enterprise" ? "bg-zinc-800 text-white" : "bg-primary text-primary-text"}`}
           >
             <div>
               {tier?.isPopular ? (
@@ -112,7 +112,7 @@ export const Pricing = () => {
               </ul>
             </div>
             <button
-              className={`w-full border-4 border-primary-text active:transition duration-300 active:shadow-[0px_0px_0px_0px_rgba(26,26,26,1)] shadow-[4px_4px_0px_0px_rgba(26,26,26,1)] py-5 font-bold uppercase tracking-widest ${tier.isPopular ? "bg-primary-text text-primary" : "bg-primary text-primary-text"}`}
+              className={`w-full transition duration-300 py-5 font-bold uppercase tracking-widest rounded-lg ${tier.isPopular ? "bg-zinc-800 text-white" : "bg-secondary text-black"}`}
             >
               {tier.buttonText}
             </button>
