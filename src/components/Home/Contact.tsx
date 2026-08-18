@@ -127,7 +127,7 @@ export const Contact = () => {
 
           <div className="flex items-center justify-center">
             <form
-              className="w-full max-w-md bg-zinc-700/40 backdrop-blur-lg text-white p-4 lg:p-8 shadow-xl rounded-xl flex flex-col gap-4 opacity-0 animate-content"
+              className="w-full max-w-md bg-[#152B2C]/40 backdrop-blur-xl border-[#294e4e] border text-white p-4 lg:p-8 shadow-xl rounded-xl flex flex-col gap-4 opacity-0 animate-content"
               onSubmit={(e) => e.preventDefault()}
             >
               <div className="space-y-2">

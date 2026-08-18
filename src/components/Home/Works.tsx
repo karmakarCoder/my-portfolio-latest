@@ -133,10 +133,7 @@ export const Works = () => {
                           className="w-full h-full object-cover"
                         />
 
-                        <div className="absolute inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] bg-size-[10px_10px] opacity-10" />
-                        <span className="absolute top-4 right-4 bg-primary-text text-primary text-[10px] px-2 py-1 z-10 uppercase">
-                          {statusText}
-                        </span>
+                        
                       </div>
                     ) : (
                       <div className="h-64 md:h-80 flex items-center justify-center relative overflow-hidden bg-zinc-100">
