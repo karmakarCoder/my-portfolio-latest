@@ -172,7 +172,7 @@ export const About = () => {
         className="grid grid-cols-1 lg:grid-cols-2 gap-8 py-10 lg:gap-0 lg:min-h-screen"
       >
         <div className="flex flex-col lg:justify-center">
-          <span className="bg-primary text-white text-xs font-medium px-2 py-0.5 w-fit mb-6 tracking-widest uppercase opacity-0 animate-content">
+          <span className="bg-primary text-black text-xs font-medium px-2 py-0.5 w-fit mb-6 tracking-widest uppercase opacity-0 animate-content">
             about
           </span>
           <h2
