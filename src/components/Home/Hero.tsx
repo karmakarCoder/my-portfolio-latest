@@ -135,7 +135,7 @@ export const Hero = () => {
   return (
     <section className="relative pb-10 pt-10 lg:pt-0 lg:pb-0 lg:min-h-screen flex flex-col overflow-hidden justify-center items-center">
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-12 items-center">
           <div className="z-10">
             <h1 className="text-4xl leading-none font-bold uppercase md:text-6xl md:mb-8 mb-5 tracking-tight">
               <div ref={textRef1} className="opacity-0">
@@ -197,7 +197,7 @@ export const Hero = () => {
           <div className="relative order-last flex justify-center lg:justify-end">
             <div
               ref={profileBoxRef}
-              className="relative w-60 h-65 md:w-70 md:h-90 shadow-xl overflow-hidden md:rounded-none rounded-lg bg-zinc-200 opacity-0"
+              className="relative max-w-65 w-full h-65 sm:w-70 lg:h-90 shadow-xl overflow-hidden md:rounded-none rounded-lg bg-zinc-200 opacity-0"
             >
               <Image
                 src={rodro}

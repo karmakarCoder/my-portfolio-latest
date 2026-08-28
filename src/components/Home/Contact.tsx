@@ -6,6 +6,8 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FaGithub, FaGlobe, FaLinkedin } from "react-icons/fa";
+import { SiMedium } from "react-icons/si";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -63,14 +65,17 @@ export const Contact = () => {
     {
       name: "github.com/karmakarCoder",
       url: "https://github.com/karmakarCoder",
+      icon: <FaGithub />,
     },
     {
       name: "linkedin.com/in/rodrokarmakar",
       url: "https://www.linkedin.com/in/rodrokarmakar",
+      icon: <FaLinkedin />,
     },
     {
       name: "medium.com/@dev.rodro",
       url: "https://medium.com/@dev.rodro",
+      icon: <SiMedium />,
     },
   ];
   return (
@@ -92,13 +97,13 @@ export const Contact = () => {
             </div>
 
             <div className="flex flex-col gap-4">
-              {links?.map((item, index) => (
+              {links?.map((item: any, index) => (
                 <div
                   key={index}
                   className="flex items-center gap-4 group cursor-pointer opacity-0 animate-content"
                 >
                   <span className="size-6 flex items-center justify-center bg-zinc-200 rounded text-black font-mono text-xs group-hover:bg-secondary transition-colors">
-                    0{index + 1}
+                    {item.icon}
                   </span>
                   <Link
                     href={item?.url}
@@ -112,7 +117,7 @@ export const Contact = () => {
 
               <div className="flex items-center gap-4 group cursor-pointer opacity-0 animate-content">
                 <span className="size-6 flex items-center justify-center bg-zinc-200 rounded text-black font-mono text-xs group-hover:bg-secondary transition-colors">
-                  04
+                  <FaGlobe />
                 </span>
                 <Link
                   href={"mailto:dev.rodro@gmail.com"}
